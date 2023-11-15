@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  validates :username, presence: true
+  validates :username, uniqueness: true
   def index
     matching_users = User.all
 
