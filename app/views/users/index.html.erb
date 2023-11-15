@@ -5,27 +5,42 @@
 <table border="1">
   <tr>
     <th>
-      ID
-    </th>
-
-    <th>
       Username
     </th>
 
-    <td>
-    </td>
+    <th>
+      Private?
+    </th>
+
+    <th>
+      
+    </th>
+
+    <th>
+      
+    </th>
+
   </tr>
 
   <% @list_of_users.each do |a_user| %>
 
     <tr>
       <td>
-        <%= a_user.id %>
-      </td>
-
-      <td>
         <%= a_user.username %>
       </td>
+
+      <th>
+        Private
+      </th>
+      
+      <% if current_user != nil %>
+        <td>
+          <button>Follow</button>
+        </td>
+      <% else %>
+        <td>
+        </td>
+      <% end %>
 
       <td>
         <a href="/users/<%= a_user.username %>">
