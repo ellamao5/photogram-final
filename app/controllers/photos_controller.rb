@@ -16,6 +16,8 @@ class PhotosController < ApplicationController
 
     @fans = @the_photo.fans
 
+    @comments = @the_photo.comments
+
     render({ :template => "photos/show" })
   end
 
