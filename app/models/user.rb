@@ -74,7 +74,7 @@ class User < ApplicationRecord
   has_many(:followers, through: :accepted_received_follow_requests, source: :sender)
 
   # User#leaders: returns rows from the users table associated to this user through its accepted_sent_follow_requests (the follow requests' recipients)
-  has_many(:leaders, through: :accepted_sent_follow_requests, source: :recipient)
+  has_many(:following, through: :accepted_sent_follow_requests, source: :recipient)
 
   # User#feed: returns rows from the photos table associated to this user through its leaders (the leaders' own_photos)
   has_many(:feed, through: :leaders, source: :own_photos)

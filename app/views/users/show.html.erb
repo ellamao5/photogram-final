@@ -12,13 +12,24 @@
     Followers
   </dt>
   <dd>
-    <%= @the_user.followers.count %>
+    <div><%= @the_user.followers.count %></div>
     Unfollow
   </dd>
 
-  <dt></dt>
+  <dt>
+    Following
+  </dt>
+  <dd>
+    <%= @the_user.following.count %>
+  </dd>
 
 </dl>
+
+<ul>
+  <li>
+    <a href="/users/<%= @the_user.username %>">Profile</a>
+  </li>
+</ul>
 
 <h2>Own photos (<%= @the_user.own_photos.count %>)</h2>
 
