@@ -14,6 +14,8 @@ class PhotosController < ApplicationController
 
     @the_photo = matching_photos.at(0)
 
+    @fans = @the_photo.fans
+
     render({ :template => "photos/show" })
   end
 

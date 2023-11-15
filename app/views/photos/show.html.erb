@@ -1,24 +1,17 @@
 <div>
   <div>
     <h1>
-      Photo #<%= @the_photo.id %> details
+      Photo details
     </h1>
 
-    <div>
-      <div>
-        <a href="/photos">
-          Go back
-        </a>
-      </div>
-
-      <div>
-        <a href="/delete_photo/<%= @the_photo.id %>">
-          Delete photo
-        </a>
-      </div>
-    </div>
-
     <dl>
+      <dt>
+        Image
+      </dt>
+      <dd>
+        <img src="<%= @the_photo.image %>">
+      </dd>
+
       <dt>
         Caption
       </dt>
@@ -27,24 +20,17 @@
       </dd>
 
       <dt>
-        Image
-      </dt>
-      <dd>
-        <%= @the_photo.image %>
-      </dd>
-
-      <dt>
         Owner
       </dt>
       <dd>
-        <%= @the_photo.owner_id %>
+        <%= @the_photo.owner.username %>
       </dd>
 
       <dt>
-        Comments count
+        Posted
       </dt>
       <dd>
-        <%= @the_photo.comments_count %>
+        <%= time_ago_in_words(@the_photo.created_at) %> ago
       </dd>
 
       <dt>
@@ -55,17 +41,28 @@
       </dd>
 
       <dt>
-        Created at
+        Comments count
       </dt>
       <dd>
-        <%= time_ago_in_words(@the_photo.created_at) %> ago
+        <%= @the_photo.comments_count %>
+      </dd>
+
+      
+
+      <dt>
+        Fans
+      </dt>
+      <dd>
+        <% @fans.each do |fan| %>
+          <%= fan.username %>
+        <% end %>
       </dd>
 
       <dt>
-        Updated at
+        Add a fan
       </dt>
       <dd>
-        <%= time_ago_in_words(@the_photo.updated_at) %> ago
+        <button>Like</button>
       </dd>
     </dl>
   </div>
