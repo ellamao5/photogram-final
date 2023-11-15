@@ -30,7 +30,11 @@
       </td>
 
       <th>
-        Private
+        <% if a_user.fetch('private') != true %>
+          No
+        <% else %>
+          Yes
+        <% end %>
       </th>
       
       <% if current_user != nil %>
