@@ -29,6 +29,18 @@
   <li>
     <a href="/users/<%= @the_user.username %>">Profile</a>
   </li>
+
+  <li>
+    <a href="/users/<%= @the_user.username %>/liked_photos">Liked photos</a>
+  </li>
+
+  <li> 
+    <a href="/users/<%= @the_user.username %>/feed">Feed</a>
+  </li>
+
+  <li> 
+    <a href="/users/<%= @the_user.username %>/discover">Discover</a>
+  </li>
 </ul>
 
 <h2>Own photos (<%= @the_user.own_photos.count %>)</h2>
