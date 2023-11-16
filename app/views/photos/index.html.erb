@@ -10,7 +10,7 @@
 
 <div>
   <div>
-
+  <% if current_user != nil %>
     <form action="/insert_photo" method="post" class="form-horizontal">
       
         <label for="image_box">
@@ -32,10 +32,12 @@
         Add photo
       </button>
     </form>
+  <% else %>
+  <% end %>
   </div>
 </div>
 
-<hr>
+
 <div>
   <div>
     <table border="1">
@@ -65,38 +67,40 @@
         </th>
       </tr>
 
-      <% @list_of_photos.each do |a_photo| %>
-      <tr>
-        <td>
-          <img src="<%= a_photo.image %>">
-          
-        </td>
+      <% if current_user != nil %>
+        <% @list_of_photos.each do |a_photo| %>
+        <tr>
+          <td>
+            <img src="<%= a_photo.image %>">
+            
+          </td>
 
-        <td>
-          <%= a_photo.caption %>
-        </td>
+          <td>
+            <%= a_photo.caption %>
+          </td>
 
-        <td>
-          <%= a_photo.owner.username %>
-        </td>
+          <td>
+            <%= a_photo.owner.username %>
+          </td>
 
-        <td>
-          <%= time_ago_in_words(a_photo.created_at) %> ago
-        </td>
+          <td>
+            <%= time_ago_in_words(a_photo.created_at) %> ago
+          </td>
 
-        <td>
-          <%= a_photo.likes_count %>
-        </td>
+          <td>
+            <%= a_photo.likes_count %>
+          </td>
 
-        <td>
-          <a href="/photos/<%= a_photo.id %>">
-            Show details
-          </a>
-        </td>
-      </tr>
+          <td>
+            <a href="/photos/<%= a_photo.id %>">
+              Show details
+            </a>
+          </td>
+        </tr>
+        <% end %>
+      <% else %>
+      
       <% end %>
     </table>
   </div>
 </div>
-
-<hr>
