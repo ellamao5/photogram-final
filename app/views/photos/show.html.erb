@@ -62,7 +62,19 @@
         Add a fan
       </dt>
       <dd>
-        <button>Like</button>
+        <% if @liked == true %>
+          <form action="/remove_like" method="post">
+            <label for="photo_id_like"></label>
+            <input type="hidden" name="query_photo_id" id="photo_id_like" value="<%= @the_photo.id %>">
+            <button>Unlike</button>
+          </form>
+        <% elsif @liked == false %>
+          <form action="/insert_like" method="post">
+            <label for="photo_id_like"></label>
+            <input type="hidden" name="query_photo_id" id="photo_id_like" value="<%= @the_photo.id%>">
+            <button>Like</button>
+          </form>
+        <% end %>
       </dd>
     </dl>
   </div>

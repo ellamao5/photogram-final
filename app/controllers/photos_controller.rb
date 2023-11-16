@@ -9,6 +9,7 @@ class PhotosController < ApplicationController
   end
 
   def show
+
     the_id = params.fetch("path_id")
 
     matching_photos = Photo.where({ :id => the_id })
@@ -18,6 +19,11 @@ class PhotosController < ApplicationController
     @fans = @the_photo.fans
 
     @comments = @the_photo.comments
+
+    matching_likes = Like.where({ :fan_id => current_user.id, :photo_id => @the_photo.id })
+    the_like = matching_likes.at(0)
+
+    @liked = the_like.present?
 
     render({ :template => "photos/show" })
   end
