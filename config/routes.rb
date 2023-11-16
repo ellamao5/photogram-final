@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root "users#index"
+  root "photos#index"
   #Routes for Users
 
   get("/users", { :controller => "users", :action => "index" })
