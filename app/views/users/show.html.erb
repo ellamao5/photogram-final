@@ -13,7 +13,21 @@
   </dt>
   <dd>
     <div><%= @the_user.followers.count %></div>
-    Unfollow
+    <% if @followrequest %>
+          <form action="/delete_follow_request" method="post">
+            <label for="unfollow_user"></label>
+            <input type="hidden" name="query_recipient_id" id="unfollow_user" value="<%= @user.id %>">
+            <button>Unfollow</button>
+          </form>
+        <% else %>
+          <form action="/insert_follow_request" method="post">
+            <label for="like_user"></label>
+            <input type="hidden" name="query_recipient_id" id="like_user" value="<%= @user.id %>">
+            
+            <button>Follow</button>
+          </form>
+        <% end %>
+          
   </dd>
 
   <dt>
